@@ -23,13 +23,23 @@ export class WorkspaceService {
     constructor(
         @inject(WorkspaceServer) protected readonly server: WorkspaceServer
     ) {
-        console.log(this.server.getRequest())
+        console.log('service - constructor');
+        console.log(this.server.getRequest());
     }
 
     /**
      * Open a given URI as the current workspace root.
      */
+     getRequest(): Promise<string> {
+        console.log('service - getRequest called!');
+        console.log(this.server);
+        return this.server.getRequest();
+    }
 
+    setRequest(): void {
+        console.log('service - setRequest called!');
+        this.server.setRequest('test');
+    }
 }
 
 export interface WorkspaceInput {

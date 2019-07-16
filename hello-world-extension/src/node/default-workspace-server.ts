@@ -24,14 +24,20 @@ export class DefaultWorkspaceServer implements WorkspaceServer {
     }
 
     setRequest(uri: string): Promise<void> {
+        console.log('setRequest test 1 - server');
         console.log(uri);
+        console.log('setRequest test 2 - server');
         this.root = uri;
+        this.logger.info('setRequest test 3 - server');
+        this.logger.info(uri);
         return Promise.resolve();
     }
 
     getRequest(): Promise<string> {
-        return this.root;
-    }
-
-    
+        console.log('getRequest test 1 - server');
+        console.log('Path : ' +  process.env.PATH);
+        this.root = 'Hello Server Test!!!'
+        
+        return Promise.resolve(this.root);
+    }    
 }
